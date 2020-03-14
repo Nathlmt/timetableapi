@@ -1,0 +1,1 @@
+module.exports =  (data, error) => error ? error: data
