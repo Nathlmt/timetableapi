@@ -8,23 +8,23 @@ function tableRepository(dbContext) {
             return res.json(response(data, error));
         });
     }
-    function getTable(req, res) {
+    function getTable(req, res, next) {
         if (req.params.sid) {
             var parameters = [];
-            parameters.push({ name: 'Id', type: TYPES.Int, val: req.params.sid });
-            var query = "select * from thong_tin_lop where MSSV = @Id"
+            parameters.push({ name: 'MSSV', type: TYPES.Int, val: req.params.sid });
+            var query = "select * from thong_tin_lop where MSSV = @MSSV"
             dbContext.getQuery(query, parameters, false, function (error, data) {
                 if (data) {
-                    req.data = data[0];
-                    return next();
+                    return res.json(response(data, error));
                 }
                 return res.sendStatus(404);
             });
         }
     }
     function postTables(req, res) {
-        var parameters = model.modelTable(req)
-        dbContext.post("InsertOrUpdateTable", parameters, function (error, data) {
+        var parameters = model(req)
+        console.log(parameters)
+        dbContext.post("InsertOrUpdateTime", parameters, function (error, data) {
             return res.json(response(data, error));
         });
     }

@@ -9,7 +9,7 @@ var config = {
         }
     },
     options: {
-        database: 'tableTime',
+        database: 'timeTable',
         encrypt: true
     }
 }
