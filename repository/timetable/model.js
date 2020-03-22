@@ -21,12 +21,6 @@ const fields = [
         field: 'Loai_Lop',
         type: TYPES.VarChar
     }, {
-        field: 'Bat_Dau',
-        type: TYPES.Time
-    },  {
-        field: 'Ket_Thuc',
-        type: TYPES.Time
-    }, {
         field: 'Thu',
         type: TYPES.VarChar
     }, {
@@ -38,10 +32,21 @@ const fields = [
     }]
 
 function modelTable(req) {
-    return parameters = fields.map((field) => ({
+
+    let parameters = fields.map((field) => ({
         name: field.field,
         type: field.type,
         val: req.body[field.field]
-    }));
+    }))
+    return [...parameters,{
+        name: 'Bat_Dau',
+        type: TYPES.Time,
+        val: req.body.Bat_Dau ? new Date('1970-01-01T' + req.body.Bat_Dau + 'Z') : undefined
+
+    }, {
+        name: 'Ket_Thuc',
+        type: TYPES.Time,
+        val: req.body.Ket_Thuc ? new Date('1970-01-01T' + req.body.Ket_Thuc + 'Z') : undefined
+    }]
 }
 module.exports = modelTable;
