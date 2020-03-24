@@ -3,17 +3,17 @@ var model = require('./model');
 var TYPES = require('tedious').TYPES;
 
 function tableRepository(dbContext) {
-    function getTables(req, res) {
-        dbContext.get("getTable", function table(error, data) {
+    async function getTables(req, res) {
+        await dbContext.get("getTable", function table(error, data) {
             return res.json(response(data, error));
         });
     }
-    function getTable(req, res, next) {
+    async function getTable(req, res, next) {
         if (req.params.sid) {
             var parameters = [];
             parameters.push({ name: 'MSSV', type: TYPES.Int, val: req.params.sid });
             var query = "select * from thong_tin_lop where MSSV = @MSSV"
-            dbContext.getQuery(query, parameters, false, function (error, data) {
+            await dbContext.getQuery(query, parameters, false, function (error, data) {
                 if (data) {
                     return res.json(response(data, error));
                 }
@@ -21,10 +21,10 @@ function tableRepository(dbContext) {
             });
         }
     }
-    function postTables(req, res) {
+    async function postTables(req, res) {
         var parameters = model(req)
-        console.log(parameters)
-        dbContext.post("InsertOrUpdateTime", parameters, function (error, data) {
+        await dbContext.post("InsertOrUpdateTime", parameters, function (error, data) {
+            console.log(error);
             return res.json(response(data, error));
         });
     }
