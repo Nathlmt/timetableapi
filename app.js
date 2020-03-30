@@ -3,7 +3,7 @@ var bodyParser = require('body-parser');
 var router = require('./routes')();
 
 var app = express();
-var port = process.env.port || 3300
+var port = process.env.port || 8080
 app.listen(port, () => {
     console.log("Hi This port is running");
 });
