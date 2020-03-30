@@ -1,0 +1,26 @@
+{
+  "name": "timetableapi",
+  "version": "1.0.0",
+  "description": "To install   1. Install Nodejs https://nodejs.org/en/   2. Open Project and run npm install in terminal   3. Run server: node app.js   4. Server in: localhost:3300/ # timetableapi",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "tedious": "^8.0.1",
+    "tedious-connection-pool": "^1.0.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nathlmt/timetableapi.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nathlmt/timetableapi/issues"
+  },
+  "homepage": "https://github.com/Nathlmt/timetableapi#readme"
+}
